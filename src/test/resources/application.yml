@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  session:
+    store-type: jdbc
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev?characterEncoding=UTF-8&serverTimezone=UTC
+    username: dev
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test
+            client-secret: test
+            scope: profile, email

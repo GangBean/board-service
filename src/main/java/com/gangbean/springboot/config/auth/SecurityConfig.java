@@ -14,15 +14,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                    .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
-                    .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                    .anyRequest().authenticated()
+                .antMatchers("/", "/css/**", "/images/**", "/js/**").permitAll()
+                .antMatchers("/api/v1/**").hasRole(Role.USER.name()).anyRequest().authenticated()
             .and()
                 .logout().logoutSuccessUrl("/")
             .and()
                 .oauth2Login()
-                    .userInfoEndpoint()
-                        .userService(customOAuth2UserService);
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
     }
 
 }
